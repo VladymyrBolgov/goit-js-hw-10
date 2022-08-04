@@ -14,15 +14,15 @@ input.addEventListener('input', debounce(searchCountries, DEBOUNCE_DELAY));
 
 const searchCountries = (event => {
     event.preventDefault();
-
     const url = fetchCountries();
     
     fetch(url)
         .then((response) => response.json())
-    
+        .then((data) => {
+            console.log("data", data);
+        })
         .catch((error) => {
             console.log("error", error);
           });
-
 })
 
