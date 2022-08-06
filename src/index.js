@@ -2,7 +2,7 @@ import './css/styles.css';
 import debounce from 'lodash.debounce';
 import Notiflix from 'notiflix';
 
-import { fetchCountries } from './fetchCountries';
+import  fetchCountries  from './fetchCountries';
 
 const DEBOUNCE_DELAY = 300;
 
@@ -26,7 +26,7 @@ function searchCountries(event){
 
     fetchCountries(spaceSearchValue)
         .then(renderСountryCard)
-        .catch(ifFetchError)
+        .catch(onFetchError)
 }
 
 
@@ -61,6 +61,11 @@ function visualization(size, createElementSymbols, createElementInfo) {
     }
 }
 
-function ifFetchError(error) {
+function onFetchError(error) {
     Notiflix.Notify.failure('Oops, there is no country with that name');
+}
+
+function removeHTML () {
+    countryList.innerHTML = '';
+    countryInfo.innerHTML = '';
 }
