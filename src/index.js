@@ -10,7 +10,9 @@ const input = document.querySelector('#search-box');
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
 
-const searchCountries = (event) => {
+input.addEventListener('input', debounce(searchCountries, DEBOUNCE_DELAY));
+
+function searchCountries(event){
     event.preventDefault();
 
     const searchValue = input.value;
@@ -26,7 +28,7 @@ const searchCountries = (event) => {
         .then(renderСountryCard)
         .catch(ifFetchError)
 }
-input.addEventListener('input', debounce(searchCountries, DEBOUNCE_DELAY));
+
 
 function renderСountryCard (countries) {
     const size = Object.keys(countries).length;
